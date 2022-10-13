@@ -4,7 +4,8 @@
   "description": "Collection of streams for handling the Mumble protocol",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha test/**/*.js"
+    "test": "./node_modules/mocha/bin/mocha test/**/*.js",
+    "protoc": "./node_modules/protobufjs-cli/bin/pbjs --keep-case -t json lib/Mumble.proto -o lib/MumbleProto.json"
   },
   "author": "johni0702 <me@johni0702.de>",
   "license": "ISC",
@@ -13,10 +14,11 @@
     "lib"
   ],
   "dependencies": {
-    "protobufjs": "^5.0.1"
+    "protobufjs": "~7.1.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^2.5.3"
+    "mocha": "^2.5.3",
+    "protobufjs-cli": "^1.0.2"
   }
 }

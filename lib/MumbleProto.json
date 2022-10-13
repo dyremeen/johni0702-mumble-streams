@@ -1,0 +1,1010 @@
+{
+  "nested": {
+    "MumbleProto": {
+      "options": {
+        "optimize_for": "SPEED"
+      },
+      "nested": {
+        "Version": {
+          "fields": {
+            "version": {
+              "type": "uint32",
+              "id": 1
+            },
+            "release": {
+              "type": "string",
+              "id": 2
+            },
+            "os": {
+              "type": "string",
+              "id": 3
+            },
+            "os_version": {
+              "type": "string",
+              "id": 4
+            }
+          }
+        },
+        "UDPTunnel": {
+          "fields": {
+            "packet": {
+              "rule": "required",
+              "type": "bytes",
+              "id": 1
+            }
+          }
+        },
+        "Authenticate": {
+          "fields": {
+            "username": {
+              "type": "string",
+              "id": 1
+            },
+            "password": {
+              "type": "string",
+              "id": 2
+            },
+            "tokens": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 3
+            },
+            "celt_versions": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 4,
+              "options": {
+                "packed": false
+              }
+            },
+            "opus": {
+              "type": "bool",
+              "id": 5,
+              "options": {
+                "default": false
+              }
+            }
+          }
+        },
+        "Ping": {
+          "fields": {
+            "timestamp": {
+              "type": "uint64",
+              "id": 1
+            },
+            "good": {
+              "type": "uint32",
+              "id": 2
+            },
+            "late": {
+              "type": "uint32",
+              "id": 3
+            },
+            "lost": {
+              "type": "uint32",
+              "id": 4
+            },
+            "resync": {
+              "type": "uint32",
+              "id": 5
+            },
+            "udp_packets": {
+              "type": "uint32",
+              "id": 6
+            },
+            "tcp_packets": {
+              "type": "uint32",
+              "id": 7
+            },
+            "udp_ping_avg": {
+              "type": "float",
+              "id": 8
+            },
+            "udp_ping_var": {
+              "type": "float",
+              "id": 9
+            },
+            "tcp_ping_avg": {
+              "type": "float",
+              "id": 10
+            },
+            "tcp_ping_var": {
+              "type": "float",
+              "id": 11
+            }
+          }
+        },
+        "Reject": {
+          "fields": {
+            "type": {
+              "type": "RejectType",
+              "id": 1
+            },
+            "reason": {
+              "type": "string",
+              "id": 2
+            }
+          },
+          "nested": {
+            "RejectType": {
+              "values": {
+                "None": 0,
+                "WrongVersion": 1,
+                "InvalidUsername": 2,
+                "WrongUserPW": 3,
+                "WrongServerPW": 4,
+                "UsernameInUse": 5,
+                "ServerFull": 6,
+                "NoCertificate": 7,
+                "AuthenticatorFail": 8
+              }
+            }
+          }
+        },
+        "ServerSync": {
+          "fields": {
+            "session": {
+              "type": "uint32",
+              "id": 1
+            },
+            "max_bandwidth": {
+              "type": "uint32",
+              "id": 2
+            },
+            "welcome_text": {
+              "type": "string",
+              "id": 3
+            },
+            "permissions": {
+              "type": "uint64",
+              "id": 4
+            }
+          }
+        },
+        "ChannelRemove": {
+          "fields": {
+            "channel_id": {
+              "rule": "required",
+              "type": "uint32",
+              "id": 1
+            }
+          }
+        },
+        "ChannelState": {
+          "fields": {
+            "channel_id": {
+              "type": "uint32",
+              "id": 1
+            },
+            "parent": {
+              "type": "uint32",
+              "id": 2
+            },
+            "name": {
+              "type": "string",
+              "id": 3
+            },
+            "links": {
+              "rule": "repeated",
+              "type": "uint32",
+              "id": 4,
+              "options": {
+                "packed": false
+              }
+            },
+            "description": {
+              "type": "string",
+              "id": 5
+            },
+            "links_add": {
+              "rule": "repeated",
+              "type": "uint32",
+              "id": 6,
+              "options": {
+                "packed": false
+              }
+            },
+            "links_remove": {
+              "rule": "repeated",
+              "type": "uint32",
+              "id": 7,
+              "options": {
+                "packed": false
+              }
+            },
+            "temporary": {
+              "type": "bool",
+              "id": 8,
+              "options": {
+                "default": false
+              }
+            },
+            "position": {
+              "type": "int32",
+              "id": 9,
+              "options": {
+                "default": 0
+              }
+            },
+            "description_hash": {
+              "type": "bytes",
+              "id": 10
+            },
+            "max_users": {
+              "type": "uint32",
+              "id": 11
+            }
+          }
+        },
+        "UserRemove": {
+          "fields": {
+            "session": {
+              "rule": "required",
+              "type": "uint32",
+              "id": 1
+            },
+            "actor": {
+              "type": "uint32",
+              "id": 2
+            },
+            "reason": {
+              "type": "string",
+              "id": 3
+            },
+            "ban": {
+              "type": "bool",
+              "id": 4
+            }
+          }
+        },
+        "UserState": {
+          "fields": {
+            "session": {
+              "type": "uint32",
+              "id": 1
+            },
+            "actor": {
+              "type": "uint32",
+              "id": 2
+            },
+            "name": {
+              "type": "string",
+              "id": 3
+            },
+            "user_id": {
+              "type": "uint32",
+              "id": 4
+            },
+            "channel_id": {
+              "type": "uint32",
+              "id": 5
+            },
+            "mute": {
+              "type": "bool",
+              "id": 6
+            },
+            "deaf": {
+              "type": "bool",
+              "id": 7
+            },
+            "suppress": {
+              "type": "bool",
+              "id": 8
+            },
+            "self_mute": {
+              "type": "bool",
+              "id": 9
+            },
+            "self_deaf": {
+              "type": "bool",
+              "id": 10
+            },
+            "texture": {
+              "type": "bytes",
+              "id": 11
+            },
+            "plugin_context": {
+              "type": "bytes",
+              "id": 12
+            },
+            "plugin_identity": {
+              "type": "string",
+              "id": 13
+            },
+            "comment": {
+              "type": "string",
+              "id": 14
+            },
+            "hash": {
+              "type": "string",
+              "id": 15
+            },
+            "comment_hash": {
+              "type": "bytes",
+              "id": 16
+            },
+            "texture_hash": {
+              "type": "bytes",
+              "id": 17
+            },
+            "priority_speaker": {
+              "type": "bool",
+              "id": 18
+            },
+            "recording": {
+              "type": "bool",
+              "id": 19
+            }
+          }
+        },
+        "BanList": {
+          "fields": {
+            "bans": {
+              "rule": "repeated",
+              "type": "BanEntry",
+              "id": 1
+            },
+            "query": {
+              "type": "bool",
+              "id": 2,
+              "options": {
+                "default": false
+              }
+            }
+          },
+          "nested": {
+            "BanEntry": {
+              "fields": {
+                "address": {
+                  "rule": "required",
+                  "type": "bytes",
+                  "id": 1
+                },
+                "mask": {
+                  "rule": "required",
+                  "type": "uint32",
+                  "id": 2
+                },
+                "name": {
+                  "type": "string",
+                  "id": 3
+                },
+                "hash": {
+                  "type": "string",
+                  "id": 4
+                },
+                "reason": {
+                  "type": "string",
+                  "id": 5
+                },
+                "start": {
+                  "type": "string",
+                  "id": 6
+                },
+                "duration": {
+                  "type": "uint32",
+                  "id": 7
+                }
+              }
+            }
+          }
+        },
+        "TextMessage": {
+          "fields": {
+            "actor": {
+              "type": "uint32",
+              "id": 1
+            },
+            "session": {
+              "rule": "repeated",
+              "type": "uint32",
+              "id": 2,
+              "options": {
+                "packed": false
+              }
+            },
+            "channel_id": {
+              "rule": "repeated",
+              "type": "uint32",
+              "id": 3,
+              "options": {
+                "packed": false
+              }
+            },
+            "tree_id": {
+              "rule": "repeated",
+              "type": "uint32",
+              "id": 4,
+              "options": {
+                "packed": false
+              }
+            },
+            "message": {
+              "rule": "required",
+              "type": "string",
+              "id": 5
+            }
+          }
+        },
+        "PermissionDenied": {
+          "fields": {
+            "permission": {
+              "type": "uint32",
+              "id": 1
+            },
+            "channel_id": {
+              "type": "uint32",
+              "id": 2
+            },
+            "session": {
+              "type": "uint32",
+              "id": 3
+            },
+            "reason": {
+              "type": "string",
+              "id": 4
+            },
+            "type": {
+              "type": "DenyType",
+              "id": 5
+            },
+            "name": {
+              "type": "string",
+              "id": 6
+            }
+          },
+          "nested": {
+            "DenyType": {
+              "values": {
+                "Text": 0,
+                "Permission": 1,
+                "SuperUser": 2,
+                "ChannelName": 3,
+                "TextTooLong": 4,
+                "H9K": 5,
+                "TemporaryChannel": 6,
+                "MissingCertificate": 7,
+                "UserName": 8,
+                "ChannelFull": 9,
+                "NestingLimit": 10
+              }
+            }
+          }
+        },
+        "ACL": {
+          "fields": {
+            "channel_id": {
+              "rule": "required",
+              "type": "uint32",
+              "id": 1
+            },
+            "inherit_acls": {
+              "type": "bool",
+              "id": 2,
+              "options": {
+                "default": true
+              }
+            },
+            "groups": {
+              "rule": "repeated",
+              "type": "ChanGroup",
+              "id": 3
+            },
+            "acls": {
+              "rule": "repeated",
+              "type": "ChanACL",
+              "id": 4
+            },
+            "query": {
+              "type": "bool",
+              "id": 5,
+              "options": {
+                "default": false
+              }
+            }
+          },
+          "nested": {
+            "ChanGroup": {
+              "fields": {
+                "name": {
+                  "rule": "required",
+                  "type": "string",
+                  "id": 1
+                },
+                "inherited": {
+                  "type": "bool",
+                  "id": 2,
+                  "options": {
+                    "default": true
+                  }
+                },
+                "inherit": {
+                  "type": "bool",
+                  "id": 3,
+                  "options": {
+                    "default": true
+                  }
+                },
+                "inheritable": {
+                  "type": "bool",
+                  "id": 4,
+                  "options": {
+                    "default": true
+                  }
+                },
+                "add": {
+                  "rule": "repeated",
+                  "type": "uint32",
+                  "id": 5,
+                  "options": {
+                    "packed": false
+                  }
+                },
+                "remove": {
+                  "rule": "repeated",
+                  "type": "uint32",
+                  "id": 6,
+                  "options": {
+                    "packed": false
+                  }
+                },
+                "inherited_members": {
+                  "rule": "repeated",
+                  "type": "uint32",
+                  "id": 7,
+                  "options": {
+                    "packed": false
+                  }
+                }
+              }
+            },
+            "ChanACL": {
+              "fields": {
+                "apply_here": {
+                  "type": "bool",
+                  "id": 1,
+                  "options": {
+                    "default": true
+                  }
+                },
+                "apply_subs": {
+                  "type": "bool",
+                  "id": 2,
+                  "options": {
+                    "default": true
+                  }
+                },
+                "inherited": {
+                  "type": "bool",
+                  "id": 3,
+                  "options": {
+                    "default": true
+                  }
+                },
+                "user_id": {
+                  "type": "uint32",
+                  "id": 4
+                },
+                "group": {
+                  "type": "string",
+                  "id": 5
+                },
+                "grant": {
+                  "type": "uint32",
+                  "id": 6
+                },
+                "deny": {
+                  "type": "uint32",
+                  "id": 7
+                }
+              }
+            }
+          }
+        },
+        "QueryUsers": {
+          "fields": {
+            "ids": {
+              "rule": "repeated",
+              "type": "uint32",
+              "id": 1,
+              "options": {
+                "packed": false
+              }
+            },
+            "names": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "CryptSetup": {
+          "fields": {
+            "key": {
+              "type": "bytes",
+              "id": 1
+            },
+            "client_nonce": {
+              "type": "bytes",
+              "id": 2
+            },
+            "server_nonce": {
+              "type": "bytes",
+              "id": 3
+            }
+          }
+        },
+        "ContextActionModify": {
+          "fields": {
+            "action": {
+              "rule": "required",
+              "type": "string",
+              "id": 1
+            },
+            "text": {
+              "type": "string",
+              "id": 2
+            },
+            "context": {
+              "type": "uint32",
+              "id": 3
+            },
+            "operation": {
+              "type": "Operation",
+              "id": 4
+            }
+          },
+          "nested": {
+            "Context": {
+              "values": {
+                "Server": 1,
+                "Channel": 2,
+                "User": 4
+              }
+            },
+            "Operation": {
+              "values": {
+                "Add": 0,
+                "Remove": 1
+              }
+            }
+          }
+        },
+        "ContextAction": {
+          "fields": {
+            "session": {
+              "type": "uint32",
+              "id": 1
+            },
+            "channel_id": {
+              "type": "uint32",
+              "id": 2
+            },
+            "action": {
+              "rule": "required",
+              "type": "string",
+              "id": 3
+            }
+          }
+        },
+        "UserList": {
+          "fields": {
+            "users": {
+              "rule": "repeated",
+              "type": "User",
+              "id": 1
+            }
+          },
+          "nested": {
+            "User": {
+              "fields": {
+                "user_id": {
+                  "rule": "required",
+                  "type": "uint32",
+                  "id": 1
+                },
+                "name": {
+                  "type": "string",
+                  "id": 2
+                },
+                "last_seen": {
+                  "type": "string",
+                  "id": 3
+                },
+                "last_channel": {
+                  "type": "uint32",
+                  "id": 4
+                }
+              }
+            }
+          }
+        },
+        "VoiceTarget": {
+          "fields": {
+            "id": {
+              "type": "uint32",
+              "id": 1
+            },
+            "targets": {
+              "rule": "repeated",
+              "type": "Target",
+              "id": 2
+            }
+          },
+          "nested": {
+            "Target": {
+              "fields": {
+                "session": {
+                  "rule": "repeated",
+                  "type": "uint32",
+                  "id": 1,
+                  "options": {
+                    "packed": false
+                  }
+                },
+                "channel_id": {
+                  "type": "uint32",
+                  "id": 2
+                },
+                "group": {
+                  "type": "string",
+                  "id": 3
+                },
+                "links": {
+                  "type": "bool",
+                  "id": 4,
+                  "options": {
+                    "default": false
+                  }
+                },
+                "children": {
+                  "type": "bool",
+                  "id": 5,
+                  "options": {
+                    "default": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "PermissionQuery": {
+          "fields": {
+            "channel_id": {
+              "type": "uint32",
+              "id": 1
+            },
+            "permissions": {
+              "type": "uint32",
+              "id": 2
+            },
+            "flush": {
+              "type": "bool",
+              "id": 3,
+              "options": {
+                "default": false
+              }
+            }
+          }
+        },
+        "CodecVersion": {
+          "fields": {
+            "alpha": {
+              "rule": "required",
+              "type": "int32",
+              "id": 1
+            },
+            "beta": {
+              "rule": "required",
+              "type": "int32",
+              "id": 2
+            },
+            "prefer_alpha": {
+              "rule": "required",
+              "type": "bool",
+              "id": 3,
+              "options": {
+                "default": true
+              }
+            },
+            "opus": {
+              "type": "bool",
+              "id": 4,
+              "options": {
+                "default": false
+              }
+            }
+          }
+        },
+        "UserStats": {
+          "fields": {
+            "session": {
+              "type": "uint32",
+              "id": 1
+            },
+            "stats_only": {
+              "type": "bool",
+              "id": 2,
+              "options": {
+                "default": false
+              }
+            },
+            "certificates": {
+              "rule": "repeated",
+              "type": "bytes",
+              "id": 3
+            },
+            "from_client": {
+              "type": "Stats",
+              "id": 4
+            },
+            "from_server": {
+              "type": "Stats",
+              "id": 5
+            },
+            "udp_packets": {
+              "type": "uint32",
+              "id": 6
+            },
+            "tcp_packets": {
+              "type": "uint32",
+              "id": 7
+            },
+            "udp_ping_avg": {
+              "type": "float",
+              "id": 8
+            },
+            "udp_ping_var": {
+              "type": "float",
+              "id": 9
+            },
+            "tcp_ping_avg": {
+              "type": "float",
+              "id": 10
+            },
+            "tcp_ping_var": {
+              "type": "float",
+              "id": 11
+            },
+            "version": {
+              "type": "Version",
+              "id": 12
+            },
+            "celt_versions": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 13,
+              "options": {
+                "packed": false
+              }
+            },
+            "address": {
+              "type": "bytes",
+              "id": 14
+            },
+            "bandwidth": {
+              "type": "uint32",
+              "id": 15
+            },
+            "onlinesecs": {
+              "type": "uint32",
+              "id": 16
+            },
+            "idlesecs": {
+              "type": "uint32",
+              "id": 17
+            },
+            "strong_certificate": {
+              "type": "bool",
+              "id": 18,
+              "options": {
+                "default": false
+              }
+            },
+            "opus": {
+              "type": "bool",
+              "id": 19,
+              "options": {
+                "default": false
+              }
+            }
+          },
+          "nested": {
+            "Stats": {
+              "fields": {
+                "good": {
+                  "type": "uint32",
+                  "id": 1
+                },
+                "late": {
+                  "type": "uint32",
+                  "id": 2
+                },
+                "lost": {
+                  "type": "uint32",
+                  "id": 3
+                },
+                "resync": {
+                  "type": "uint32",
+                  "id": 4
+                }
+              }
+            }
+          }
+        },
+        "RequestBlob": {
+          "fields": {
+            "session_texture": {
+              "rule": "repeated",
+              "type": "uint32",
+              "id": 1,
+              "options": {
+                "packed": false
+              }
+            },
+            "session_comment": {
+              "rule": "repeated",
+              "type": "uint32",
+              "id": 2,
+              "options": {
+                "packed": false
+              }
+            },
+            "channel_description": {
+              "rule": "repeated",
+              "type": "uint32",
+              "id": 3,
+              "options": {
+                "packed": false
+              }
+            }
+          }
+        },
+        "ServerConfig": {
+          "fields": {
+            "max_bandwidth": {
+              "type": "uint32",
+              "id": 1
+            },
+            "welcome_text": {
+              "type": "string",
+              "id": 2
+            },
+            "allow_html": {
+              "type": "bool",
+              "id": 3
+            },
+            "message_length": {
+              "type": "uint32",
+              "id": 4
+            },
+            "image_message_length": {
+              "type": "uint32",
+              "id": 5
+            },
+            "max_users": {
+              "type": "uint32",
+              "id": 6
+            }
+          }
+        },
+        "SuggestConfig": {
+          "fields": {
+            "version": {
+              "type": "uint32",
+              "id": 1
+            },
+            "positional": {
+              "type": "bool",
+              "id": 2
+            },
+            "push_to_talk": {
+              "type": "bool",
+              "id": 3
+            }
+          }
+        }
+      }
+    }
+  }
+}
