@@ -63,6 +63,13 @@
               "options": {
                 "default": false
               }
+            },
+            "webrtc": {
+              "type": "bool",
+              "id": 6,
+              "options": {
+                "default": false
+              }
             }
           }
         },
@@ -334,6 +341,10 @@
             "recording": {
               "type": "bool",
               "id": 19
+            },
+            "ssrc": {
+              "type": "uint32",
+              "id": 20
             }
           }
         },
@@ -1001,6 +1012,43 @@
             "push_to_talk": {
               "type": "bool",
               "id": 3
+            }
+          }
+        },
+        "WebRTC": {
+          "fields": {
+            "ice_pwd": {
+              "type": "string",
+              "id": 1
+            },
+            "ice_ufrag": {
+              "type": "string",
+              "id": 2
+            },
+            "dtls_fingerprint": {
+              "type": "string",
+              "id": 3
+            }
+          }
+        },
+        "IceCandidate": {
+          "fields": {
+            "content": {
+              "rule": "required",
+              "type": "string",
+              "id": 1
+            }
+          }
+        },
+        "TalkingState": {
+          "fields": {
+            "session": {
+              "type": "uint32",
+              "id": 1
+            },
+            "target": {
+              "type": "uint32",
+              "id": 2
             }
           }
         }
